@@ -30,6 +30,12 @@ return {
           },
           vtsls = {
             enableMoveToFileCodeAction = true,
+            autoUseWorkspaceTsdk = true,
+            experimental = {
+              completion = {
+                enableServerSideFuzzyMatch = true,
+              },
+            },
           },
         },
       },
