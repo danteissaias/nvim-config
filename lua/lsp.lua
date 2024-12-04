@@ -30,7 +30,7 @@ local function on_attach(_, bufnr)
 end
 
 vim.diagnostic.config {
-  signs = false,
+  signs = true,
   float = {
     source = true,
   },
