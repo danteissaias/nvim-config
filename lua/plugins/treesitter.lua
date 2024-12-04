@@ -1,0 +1,35 @@
+return {
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  event = "VeryLazy",
+  lazy = vim.fn.argc(-1) == 0,
+  main = "nvim-treesitter.configs",
+  opts = {
+    ensure_installed = {
+      "css",
+      "html",
+      "javascript",
+      "jsdoc",
+      "json",
+      "json5",
+      "jsonc",
+      "lua",
+      "markdown",
+      "markdown_inline",
+      "query",
+      "toml",
+      "tsx",
+      "typescript",
+      "vim",
+      "vimdoc",
+      "xml",
+      "yaml",
+    },
+    highlight = {
+      enable = true,
+    },
+    indent = {
+      enable = true,
+    },
+  },
+}
