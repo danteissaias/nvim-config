@@ -20,20 +20,18 @@ local function on_attach(_, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
   end
 
-  map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
-  map("n", "gr", "<cmd>Telescope lsp_references<cr>")
-  map("n", "gD", vim.lsp.buf.declaration)
-  map("n", "K", vim.lsp.buf.hover)
-  map("n", "<leader>rn", vim.lsp.buf.rename)
-  map("n", "<leader>ca", vim.lsp.buf.code_action)
   map("n", "<leader>vd", vim.diagnostic.open_float)
+  map("n", "K", vim.lsp.buf.hover)
+  map("n", "gd", "<cmd>Telescope lsp_definitions<cr>")
+  map("n", "grr", "<cmd>Telescope lsp_references<cr>")
+  map("n", "grn", vim.lsp.buf.rename)
+  map({ "n", "v" }, "gra", vim.lsp.buf.code_action)
+  map("i", "<c-s>", vim.lsp.buf.signature_help)
 end
 
 vim.diagnostic.config {
   signs = true,
-  float = {
-    source = true,
-  },
+  float = { source = true },
 }
 
 local register_capability = vim.lsp.handlers["client/registerCapability"]
