@@ -20,6 +20,9 @@ vim.o.ignorecase = true
 vim.o.foldtext = ""
 vim.o.foldlevel = 99
 
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+
 vim.o.swapfile = false
 vim.o.backupcopy = "yes"
 vim.o.undofile = true
