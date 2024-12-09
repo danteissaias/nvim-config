@@ -43,6 +43,7 @@ return {
         },
       },
       yamlls = {},
+      biome = {},
     },
   },
   config = function(_, opts)
