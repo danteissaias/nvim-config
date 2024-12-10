@@ -4,10 +4,13 @@ return {
   build = "cargo +nightly build --release",
   opts = {
     appearance = { nerd_font_variant = "mono" },
-    keymap = { preset = "enter" },
-    -- signature = { enabled = true },
-    -- completion = { accept = { auto_brackets = { enabled = true } } },
-    menu = { draw = { treesitter = true } },
+    completion = {
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 0,
+        update_delay_ms = 0,
+      },
+    },
     sources = {
       completion = {
         enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
