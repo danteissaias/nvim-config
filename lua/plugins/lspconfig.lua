@@ -3,53 +3,21 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     servers = {
-      cssls = {},
       eslint = {},
-      html = {},
+      lua_ls = {},
+      tailwindcss = {},
+      yamlls = {},
+      biome = {},
       jsonls = function()
         return {
           settings = {
             json = {
               schemas = require("schemastore").json.schemas(),
-              validate = {
-                enable = true,
-              },
+              validate = { enable = true },
             },
           },
         }
       end,
-      lua_ls = {},
-      tailwindcss = {},
-      vtsls = {
-        settings = {
-          typescript = {
-            preferences = {
-              preferTypeOnlyAutoImports = true,
-            },
-            updateImportsOnFileMove = "always",
-            workspaceSymbols = {
-              scope = "currentProject",
-              excludeLibrarySymbols = true,
-            },
-          },
-          javascript = { updateImportsOnFileMove = "always" },
-          vtsls = {
-            enableMoveToFileCodeAction = true,
-            autoUseWorkspaceTsdk = true,
-            experimental = {
-              completion = {
-                enableServerSideFuzzyMatch = true,
-                entriesLimit = 75,
-              },
-            },
-            typescript = {
-              tsserver = { maxTsServerMemory = 8192 },
-            },
-          },
-        },
-      },
-      yamlls = {},
-      biome = {},
     },
   },
   config = function(_, opts)
