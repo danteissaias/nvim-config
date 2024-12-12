@@ -1,33 +1,31 @@
+local choose_formatter = function()
+  local cwd = vim.fn.getcwd()
+  local has_biome = vim.fn.filereadable(cwd .. "/biome.json")
+  return has_biome == 1 and { "biome" } or { "prettierd" }
+end
+
 return {
   "stevearc/conform.nvim",
   event = "BufWritePre",
   opts = {
     formatters_by_ft = {
-      typescript = { "biome-check", "prettierd", stop_after_first = true },
-      typescriptreact = { "biome-check", "prettierd", stop_after_first = true },
-      javascript = { "biome-check", "prettierd", stop_after_first = true },
-      javascriptreact = { "biome-check", "prettierd", stop_after_first = true },
-      json = { "biome-check", "prettierd", stop_after_first = true },
-      jsonc = { "biome-check", "prettierd", stop_after_first = true },
-      css = { "biome-check", "prettierd", stop_after_first = true },
-      yaml = { "prettierd" },
-      html = { "prettierd" },
       lua = { "stylua" },
+      javascript = choose_formatter,
+      javascriptreact = choose_formatter,
+      typescript = choose_formatter,
+      typescriptreact = choose_formatter,
+      vue = choose_formatter,
+      css = choose_formatter,
+      scss = choose_formatter,
+      less = choose_formatter,
+      html = choose_formatter,
+      json = choose_formatter,
+      jsonc = choose_formatter,
+      yaml = choose_formatter,
     },
-    formatters = {
-      prettierd = { require_cwd = true },
-      ["biome-check"] = { require_cwd = true },
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_format = "fallback",
     },
-    format_on_save = function()
-      if vim.g.autoformat then
-        return {
-          timeout_ms = 500,
-          lsp_format = "fallback",
-        }
-      end
-    end,
   },
-  init = function()
-    vim.g.autoformat = true
-  end,
 }
