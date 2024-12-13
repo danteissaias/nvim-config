@@ -1,7 +1,7 @@
 local choose_formatter = function()
   local cwd = vim.fn.getcwd()
   local has_biome = vim.fn.filereadable(cwd .. "/biome.json")
-  return has_biome == 1 and { "biome" } or { "prettierd" }
+  return has_biome == 1 and { "biome-check" } or { "prettierd" }
 end
 
 return {
