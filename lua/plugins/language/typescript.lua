@@ -7,10 +7,10 @@ return {
     "typescriptreact",
   },
   config = function()
-    local opts = require("vtsls").lspconfig
-    opts.settings = {
+    require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+
+    local settings = {
       typescript = {
-        updateImportsOnFileMove = "always",
         preferences = {
           preferTypeOnlyAutoImports = true,
         },
@@ -19,23 +19,20 @@ return {
           excludeLibrarySymbols = true,
         },
       },
-      javascript = {
-        updateImportsOnFileMove = "always",
-      },
       vtsls = {
-        enableMoveToFileCodeAction = true,
         autoUseWorkspaceTsdk = true,
-        experimental = {
-          completion = {
-            enableServerSideFuzzyMatch = true,
-            entriesLimit = 75,
-          },
-        },
+        -- experimental = {
+        --   completion = {
+        --     enableServerSideFuzzyMatch = true,
+        --     entriesLimit = 75,
+        --   },
+        -- },
         typescript = {
           tsserver = { maxTsServerMemory = 8192 },
         },
       },
     }
-    require("lspconfig").vtsls.setup(opts)
+
+    require("lspconfig").vtsls.setup(settings)
   end,
 }
