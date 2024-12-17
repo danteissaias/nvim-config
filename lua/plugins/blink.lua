@@ -3,7 +3,7 @@
 return {
   "Saghen/blink.cmp",
   lazy = false,
-  build = "cargo +nightly build --release",
+  build = "cargo build --release",
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
   opts = {
