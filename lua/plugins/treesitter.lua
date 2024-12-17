@@ -5,6 +5,7 @@ return {
   lazy = vim.fn.argc(-1) == 0,
   main = "nvim-treesitter.configs",
   opts = {
+    auto_install = true,
     ensure_installed = {
       "css",
       "html",
