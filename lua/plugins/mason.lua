@@ -7,6 +7,7 @@ return {
       "biome",
       "css-lsp",
       "eslint-lsp",
+      "gopls",
       "html-lsp",
       "json-lsp",
       "lua-language-server",
