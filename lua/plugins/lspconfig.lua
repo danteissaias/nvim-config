@@ -8,6 +8,7 @@ return {
       tailwindcss = {},
       yamlls = {},
       biome = {},
+      nil_ls = {},
       jsonls = function()
         return {
           settings = {

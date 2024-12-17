@@ -22,6 +22,7 @@ return {
       json = choose_formatter,
       jsonc = choose_formatter,
       yaml = choose_formatter,
+      nix = { "nixfmt" },
     },
     format_on_save = {
       timeout_ms = 500,

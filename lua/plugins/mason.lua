@@ -11,6 +11,7 @@ return {
       "json-lsp",
       "lua-language-server",
       "prettierd",
+      "nil",
       "selene",
       "stylua",
       "tailwindcss-language-server",
