@@ -32,5 +32,6 @@ return {
   end,
   dependencies = {
     "b0o/SchemaStore.nvim",
+    "Saghen/blink.cmp",
   },
 }
