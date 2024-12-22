@@ -20,11 +20,10 @@ local function on_attach(_, bufnr)
     vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
   end
 
-  local builtin = require "telescope.builtin"
-  map("n", "gd", builtin.lsp_definitions)
-  map("n", "grr", builtin.lsp_references)
+  map("n", "gd", vim.lsp.buf.definition)
 
   -- Default in neovim 0.11
+  map("n", "grr", vim.lsp.buf.references)
   map("n", "grn", vim.lsp.buf.rename)
   map("n", "gra", vim.lsp.buf.code_action)
   map("i", "<c-s>", vim.lsp.buf.signature_help)

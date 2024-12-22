@@ -4,6 +4,8 @@ return {
   opts = {
     integrations = {
       blink_cmp = true,
+      fzf = true,
+      treesitter = true,
       native_lsp = {
         enabled = true,
         underlines = {
