@@ -3,15 +3,15 @@
 return {
   "Saghen/blink.cmp",
   lazy = false,
-  build = "cargo build --release",
+  version = "0.8",
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
   opts = {
     appearance = { nerd_font_variant = "mono" },
     completion = {
-      -- trigger = {
-      --   prefetch_on_insert = true,
-      -- },
+      trigger = {
+        prefetch_on_insert = true,
+      },
       documentation = {
         auto_show = true,
         auto_show_delay_ms = 50,
