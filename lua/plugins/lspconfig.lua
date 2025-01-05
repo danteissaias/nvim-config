@@ -9,7 +9,6 @@ return {
       yamlls = {},
       biome = {},
       nil_ls = {},
-      gopls = {},
       jsonls = function()
         return {
           settings = {
