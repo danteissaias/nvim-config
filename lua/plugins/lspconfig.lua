@@ -3,7 +3,15 @@ return {
   event = { "BufReadPost", "BufNewFile" },
   opts = {
     servers = {
-      eslint = {},
+      eslint = {
+        root_dir = function(filename)
+          if string.find(filename, "node_modules/") then
+            return nil
+          end
+
+          return require("lspconfig.configs.eslint").default_config.root_dir(filename)
+        end,
+      },
       lua_ls = {},
       tailwindcss = {},
       yamlls = {},
