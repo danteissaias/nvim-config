@@ -3,7 +3,7 @@
 return {
   "Saghen/blink.cmp",
   lazy = false,
-  version = "0.8",
+  build = "nix run .#build-plugin",
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
   opts = {
