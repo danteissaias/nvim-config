@@ -9,30 +9,33 @@ return {
   config = function()
     require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
-    local settings = {
-      typescript = {
-        preferences = {
-          preferTypeOnlyAutoImports = true,
-        },
-        workspaceSymbols = {
-          scope = "currentProject",
-          excludeLibrarySymbols = true,
-        },
-      },
-      vtsls = {
-        autoUseWorkspaceTsdk = true,
-        -- experimental = {
-        --   completion = {
-        --     enableServerSideFuzzyMatch = true,
-        --     entriesLimit = 75,
-        --   },
-        -- },
+    local opts = {
+      settings = {
         typescript = {
-          tsserver = { maxTsServerMemory = 8192 },
+          preferences = {
+            preferTypeOnlyAutoImports = true,
+          },
+          workspaceSymbols = {
+            scope = "currentProject",
+            excludeLibrarySymbols = true,
+          },
+          tsserver = {
+            nodePath = "~/.config/nvim/run-electron-as-node",
+            maxTsServerMemory = 8192,
+          },
+        },
+        vtsls = {
+          autoUseWorkspaceTsdk = true,
+          -- experimental = {
+          --   completion = {
+          --     enableServerSideFuzzyMatch = true,
+          --     entriesLimit = 75,
+          --   },
+          -- },
         },
       },
     }
 
-    require("lspconfig").vtsls.setup(settings)
+    require("lspconfig").vtsls.setup(opts)
   end,
 }
