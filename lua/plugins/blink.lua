@@ -23,9 +23,9 @@ return {
         },
       },
     },
+    cmdline = { sources = {} },
     sources = {
       default = { "lsp", "path", "snippets", "lazydev" },
-      cmdline = {},
       providers = {
         lsp = { fallbacks = { "lazydev" } },
         lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
