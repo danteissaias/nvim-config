@@ -10,6 +10,10 @@ return {
       biome = {},
       nil_ls = {},
       eslint = {
+        flags = {
+          allow_incremental_sync = false,
+          debounce_text_changes = 1000,
+        },
         root_dir = function(filename)
           if string.find(filename, "node_modules/") then
             return nil
