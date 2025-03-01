@@ -26,12 +26,11 @@ return {
         },
         vtsls = {
           autoUseWorkspaceTsdk = true,
-          -- experimental = {
-          --   completion = {
-          --     enableServerSideFuzzyMatch = true,
-          --     entriesLimit = 75,
-          --   },
-          -- },
+          experimental = {
+            completion = {
+              enableServerSideFuzzyMatch = true,
+            },
+          },
         },
       },
     }
