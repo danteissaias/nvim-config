@@ -23,7 +23,6 @@ return {
         },
       },
     },
-    cmdline = { sources = {} },
     sources = {
       default = { "lsp", "path", "snippets", "lazydev" },
       providers = {
