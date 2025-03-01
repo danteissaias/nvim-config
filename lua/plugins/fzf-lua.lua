@@ -8,6 +8,7 @@ return {
     require("fzf-lua").setup {
       "max-perf",
       winopts = { preview = { default = "bat_native" } },
+      keymap = { fzf = { ["ctrl-q"] = "select-all+accept" } },
     }
   end,
   dependencies = {
