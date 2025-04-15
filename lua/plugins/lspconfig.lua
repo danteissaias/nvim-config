@@ -9,19 +9,20 @@ return {
       yamlls = {},
       biome = {},
       nil_ls = {},
-      eslint = {
-        flags = {
-          allow_incremental_sync = false,
-          debounce_text_changes = 1000,
-        },
-        root_dir = function(filename)
-          if string.find(filename, "node_modules/") then
-            return nil
-          end
-
-          return require("lspconfig.configs.eslint").default_config.root_dir(filename)
-        end,
-      },
+      -- eslint = {
+      --   -- flags = {
+      --   --   -- allow_incremental_sync = false,
+      --   --   -- debounce_text_changes = 1000,
+      --   -- },
+      --   cmd = { "vscode-eslint-language-server", "--stdio", "--max-old-space-size=8192" },
+      --   root_dir = function(filename)
+      --     if string.find(filename, "node_modules/") then
+      --       return nil
+      --     end
+      --
+      --     return require("lspconfig.configs.eslint").default_config.root_dir(filename)
+      --   end,
+      -- },
       jsonls = function()
         return {
           settings = {

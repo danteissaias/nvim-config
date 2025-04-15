@@ -6,7 +6,6 @@ return {
     ensure_installed = {
       "biome",
       "css-lsp",
-      "eslint-lsp",
       "html-lsp",
       "json-lsp",
       "lua-language-server",
