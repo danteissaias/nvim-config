@@ -36,7 +36,8 @@ return {
         },
       }
 
-      require("lspconfig").vtsls.setup(opts)
+      vim.lsp.config("vtsls", opts)
+      vim.lsp.enable "vtsls"
     end,
   },
   {
