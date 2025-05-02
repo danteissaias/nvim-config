@@ -1,4 +1,4 @@
-local choose_formatter = function()
+local biome_or_prettier = function()
   local cwd = vim.fn.getcwd()
   local has_biome = vim.fn.filereadable(cwd .. "/biome.json")
   return has_biome == 1 and { "biome-check" } or { "prettierd" }
@@ -9,20 +9,15 @@ return {
   event = "BufWritePre",
   opts = {
     formatters_by_ft = {
+      javascript = biome_or_prettier,
+      javascriptreact = biome_or_prettier,
+      json = biome_or_prettier,
+      jsonc = biome_or_prettier,
       lua = { "stylua" },
-      javascript = choose_formatter,
-      javascriptreact = choose_formatter,
-      typescript = choose_formatter,
-      typescriptreact = choose_formatter,
-      vue = choose_formatter,
-      css = choose_formatter,
-      scss = choose_formatter,
-      less = choose_formatter,
-      html = choose_formatter,
-      json = choose_formatter,
-      jsonc = choose_formatter,
-      yaml = choose_formatter,
       nix = { "nixfmt" },
+      typescript = biome_or_prettier,
+      typescriptreact = biome_or_prettier,
+      yaml = biome_or_prettier,
     },
     format_on_save = {
       timeout_ms = 500,

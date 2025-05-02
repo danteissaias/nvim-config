@@ -1,9 +1,7 @@
----@diagnostic disable: missing-fields
-
 return {
   "Saghen/blink.cmp",
-  lazy = false,
   build = "nix run .#build-plugin",
+  event = "InsertEnter",
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
   opts = {
@@ -31,4 +29,10 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("blink.cmp").setup(opts)
+
+    -- Extend neovim's client capabilities with the completion ones.
+    vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities(nil, true) })
+  end,
 }

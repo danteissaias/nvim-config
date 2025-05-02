@@ -1,5 +1,6 @@
-require "config.options"
-require "config.keymaps"
+require "options"
+require "keymaps"
+require "lsp"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
@@ -17,9 +18,20 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   { import = "plugins" },
-  { import = "plugins.language" },
 }, {
-  change_detection = {
-    notify = false,
+  change_detection = { notify = false },
+  rocks = { enabled = false },
+  performance = {
+    rtp = {
+      disabled_plugins = {
+        "gzip",
+        "netrwPlugin",
+        "rplugin",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
+    },
   },
 })
