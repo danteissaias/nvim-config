@@ -19,9 +19,23 @@ return {
       typescriptreact = biome_or_prettier,
       yaml = biome_or_prettier,
     },
-    format_on_save = {
-      timeout_ms = 500,
-      lsp_format = "fallback",
-    },
+    format_on_save = function()
+      -- Stop if we disabled auto-formatting.
+      if not vim.g.autoformat then
+        return nil
+      end
+
+      return {
+        timeout_ms = 500,
+        lsp_format = "fallback",
+      }
+    end,
   },
+  init = function()
+    -- Use conform for gq.
+    vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+
+    -- Start auto-formatting by default (and disable with ToggleFormat command).
+    vim.g.autoformat = true
+  end,
 }

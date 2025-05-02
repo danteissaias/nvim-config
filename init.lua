@@ -1,6 +1,7 @@
 require "options"
 require "keymaps"
 require "lsp"
+require "commands"
 
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 if not vim.uv.fs_stat(lazypath) then
