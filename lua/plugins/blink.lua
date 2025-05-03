@@ -22,10 +22,13 @@ return {
       },
     },
     sources = {
-      default = { "lsp", "path", "snippets", "lazydev" },
+      default = { "lazydev", "lsp", "path", "snippets" },
       providers = {
-        lsp = { fallbacks = { "lazydev" } },
-        lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+          score_offset = 100,
+        },
       },
     },
   },
