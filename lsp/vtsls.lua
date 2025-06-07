@@ -8,7 +8,7 @@ local jsts_settings = {
 ---@type vim.lsp.Config
 return {
   cmd = { "vtsls", "--stdio" },
-  filetypes = { "javacriptreact", "javascript", "typescript", "typescriptreact" },
+  filetypes = { "javascriptreact", "javascript", "typescript", "typescriptreact" },
   root_dir = function(bufnr, cb)
     local fname = vim.uri_to_fname(vim.uri_from_bufnr(bufnr))
 
