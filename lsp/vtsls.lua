@@ -9,7 +9,7 @@ local jsts_settings = {
 return {
   cmd = { "vtsls", "--stdio" },
   filetypes = { "javascriptreact", "javascript", "typescript", "typescriptreact" },
-  root_dir = function(bufnr, cb)
+  root_dir = function(bufnr, on_dir)
     local fname = vim.uri_to_fname(vim.uri_from_bufnr(bufnr))
 
     local ts_root = vim.fs.find("tsconfig.json", { upward = true, path = fname })[1]
@@ -17,9 +17,9 @@ return {
     local git_root = vim.fs.find(".git", { upward = true, path = fname })[1]
 
     if git_root then
-      cb(vim.fn.fnamemodify(git_root, ":h"))
+      on_dir(vim.fn.fnamemodify(git_root, ":h"))
     elseif ts_root then
-      cb(vim.fn.fnamemodify(ts_root, ":h"))
+      on_dir(vim.fn.fnamemodify(ts_root, ":h"))
     end
   end,
   settings = {
