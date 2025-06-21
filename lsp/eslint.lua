@@ -4,6 +4,7 @@ local util = require "util"
 return {
   cmd = { "vscode-eslint-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "graphql" },
+  workspace_required = true,
   root_dir = function(bufnr, on_dir)
     local root_files = {
       ".eslintrc",
@@ -14,11 +15,7 @@ return {
     }
     local fname = vim.api.nvim_buf_get_name(bufnr)
     root_files = util.insert_package_json(root_files, "eslintConfig", fname)
-    local root_dir = vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1])
-    if not root_dir then
-      return
-    end
-    on_dir(root_dir)
+    on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
   end,
   -- Using roughly the same defaults as nvim-lspconfig: https://github.com/neovim/nvim-lspconfig/blob/d3ad666b7895f958d088cceb6f6c199672c404fe/lua/lspconfig/configs/eslint.lua#L70
   settings = {
