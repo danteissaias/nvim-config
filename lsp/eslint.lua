@@ -14,7 +14,11 @@ return {
     }
     local fname = vim.api.nvim_buf_get_name(bufnr)
     root_files = util.insert_package_json(root_files, "eslintConfig", fname)
-    on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
+    local root_dir = vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1])
+    if not root_dir then
+      return
+    end
+    on_dir(root_dir)
   end,
   -- Using roughly the same defaults as nvim-lspconfig: https://github.com/neovim/nvim-lspconfig/blob/d3ad666b7895f958d088cceb6f6c199672c404fe/lua/lspconfig/configs/eslint.lua#L70
   settings = {
