@@ -1,4 +1,4 @@
----@param client vim.lsp.Client
+---@param client vim.lsp.Client?
 ---@param bufnr integer
 local function on_attach(client, bufnr)
   ---@param lhs string
