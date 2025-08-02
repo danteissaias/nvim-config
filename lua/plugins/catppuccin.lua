@@ -1,6 +1,8 @@
 return {
   "catppuccin/nvim",
   name = "catppuccin",
+  -- Old version because I don't like https://github.com/catppuccin/nvim/pull/804
+  version = "1.11.0",
   opts = {
     integrations = {
       blink_cmp = true,
@@ -17,7 +19,6 @@ return {
       },
     },
   },
-
   config = function(_, opts)
     require("catppuccin").setup(opts)
     vim.cmd.colorscheme "catppuccin"
