@@ -18,6 +18,7 @@ return {
       typescript = biome_or_prettier,
       typescriptreact = biome_or_prettier,
       yaml = biome_or_prettier,
+      go = { "gofmt" },
     },
     format_on_save = function()
       -- Stop if we disabled auto-formatting.
