@@ -1,6 +1,6 @@
 return {
   "Saghen/blink.cmp",
-  build = "nix run .#build-plugin",
+  version = "1.*",
   event = "InsertEnter",
   ---@module "blink.cmp"
   ---@type blink.cmp.Config
