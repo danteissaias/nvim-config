@@ -17,7 +17,7 @@ local function on_attach(client, bufnr)
     vim.diagnostic.jump { count = 1, severity = vim.diagnostic.severity.ERROR }
   end, "Next error")
 
-  -- vim.lsp.document_color.enable(true, bufnr)
+  vim.lsp.document_color.enable(true, bufnr)
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
