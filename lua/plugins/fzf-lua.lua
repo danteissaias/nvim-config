@@ -3,6 +3,7 @@ return {
   keys = {
     { "<leader>sf", "<cmd>Fzf files<cr>" },
     { "<leader>sg", "<cmd>Fzf live_grep_native<cr>" },
+    { "z=", "<cmd>FzfLua spell_suggest<cr>", desc = "Spelling suggestions" },
   },
   config = function()
     require("fzf-lua").setup {
