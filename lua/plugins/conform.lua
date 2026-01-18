@@ -1,11 +1,8 @@
 local get_js_formatter = function()
   local cwd = vim.fn.getcwd()
-  local has_oxfmt = vim.fn.filereadable(cwd .. "/.oxfmtrc.json") == 1
   local has_biome = vim.fn.filereadable(cwd .. "/biome.json") == 1
 
-  if has_oxfmt then
-    return { "oxfmt" }
-  elseif has_biome then
+  if has_biome then
     return { "biome-check" }
   else
     return { "prettierd" }
@@ -29,9 +26,22 @@ return {
       go = { "gofmt" },
     },
     format_on_save = function()
+      local cwd = vim.fn.getcwd()
+      local has_oxfmt = vim.fn.filereadable(cwd .. "/.oxfmtrc.json") == 1
+
       -- Stop if we disabled auto-formatting.
       if not vim.g.autoformat then
         return nil
+      end
+
+      if has_oxfmt then
+        return {
+          timeout_ms = 500,
+          lsp_format = "prefer",
+          filter = function(client)
+            return client.name == "oxfmt"
+          end,
+        }
       end
 
       return {
