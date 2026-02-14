@@ -36,6 +36,3 @@ require("lazy").setup({
     },
   },
 })
-
--- https://github.com/neovim/neovim/pull/27855
-require("vim._extui").enable {}
