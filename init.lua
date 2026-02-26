@@ -36,3 +36,5 @@ require("lazy").setup({
     },
   },
 })
+
+require("vim._core.ui2").enable {}
