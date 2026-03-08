@@ -2,7 +2,10 @@ local util = require "util"
 
 ---@type vim.lsp.Config
 return {
-  cmd = { util.find_bin "tsgo", "--lsp", "--stdio" },
+  cmd = function(dispatchers, config)
+    local cmd = util.find_bin("tsgo", (config or {}).root_dir)
+    return vim.lsp.rpc.start({ cmd, "--lsp", "--stdio" }, dispatchers)
+  end,
   filetypes = {
     "javascript",
     "javascriptreact",

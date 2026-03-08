@@ -18,10 +18,12 @@ function M.insert_package_json(config_files, field, fname)
   return config_files
 end
 
-function M.find_bin(name)
-  local local_bin = vim.fn.getcwd() .. "/node_modules/.bin/" .. name
-  if vim.fn.executable(local_bin) == 1 then
-    return local_bin
+function M.find_bin(name, root_dir)
+  if root_dir then
+    local local_bin = root_dir .. "/node_modules/.bin/" .. name
+    if vim.fn.executable(local_bin) == 1 then
+      return local_bin
+    end
   end
   return name
 end

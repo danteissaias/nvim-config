@@ -2,7 +2,10 @@ local util = require "util"
 
 ---@type vim.lsp.Config
 return {
-  cmd = { util.find_bin "oxfmt", "--lsp" },
+  cmd = function(dispatchers, config)
+    local cmd = util.find_bin("oxfmt", (config or {}).root_dir)
+    return vim.lsp.rpc.start({ cmd, "--lsp" }, dispatchers)
+  end,
   filetypes = {
     "javascript",
     "javascriptreact",
