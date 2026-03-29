@@ -2,8 +2,8 @@ return {
   "nvim-treesitter/nvim-treesitter",
   lazy = false,
   build = ":TSUpdate",
-  opts = {
-    ensure_installed = {
+  config = function()
+    local ensure_installed = {
       "bash",
       "c",
       "cpp",
@@ -21,6 +21,7 @@ return {
       "lua",
       "markdown",
       "markdown_inline",
+      "nix",
       "python",
       "query",
       "rasi",
@@ -33,12 +34,8 @@ return {
       "vim",
       "vimdoc",
       "yaml",
-    },
-    highlight = { enable = true },
-    indent = {
-      enable = true,
-      -- Treesitter unindents Yaml lists for some reason.
-      disable = { "yaml" },
-    },
-  },
+    }
+
+    require("nvim-treesitter").install(ensure_installed, { skip = { installed = true } })
+  end,
 }
