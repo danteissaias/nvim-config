@@ -38,3 +38,9 @@ require("lazy").setup({
 })
 
 require("vim._core.ui2").enable {}
+
+vim.api.nvim_create_autocmd("FileType", {
+  callback = function()
+    vim.treesitter.start()
+  end,
+})
