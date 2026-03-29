@@ -40,7 +40,11 @@ require("lazy").setup({
 require("vim._core.ui2").enable {}
 
 vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
   callback = function()
-    vim.treesitter.start()
+    local ok, _ = pcall(vim.treesitter.language.get_lang, vim.bo.filetype)
+    if ok then
+      pcall(vim.treesitter.start)
+    end
   end,
 })
