@@ -111,6 +111,7 @@ return {
       "postcss.config.cjs",
       "postcss.config.mjs",
       "postcss.config.ts",
+      ".git",
     }
     local fname = vim.api.nvim_buf_get_name(bufnr)
     on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
