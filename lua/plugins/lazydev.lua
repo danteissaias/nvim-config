@@ -4,10 +4,6 @@ return {
   opts = {
     library = {
       "lazy.nvim",
-      { path = "luvit-meta/library", words = { "vim%.uv" } },
     },
-  },
-  dependencies = {
-    "Bilal2453/luvit-meta",
   },
 }
