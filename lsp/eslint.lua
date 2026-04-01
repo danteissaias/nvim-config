@@ -22,7 +22,7 @@ return {
         arguments = {
           {
             uri = vim.uri_from_bufnr(bufnr),
-            version = vim.lsp.util.buf_versions[bufnr],
+            version = vim.lsp.util._buf_versions[bufnr],
           },
         },
       }, nil, bufnr)
