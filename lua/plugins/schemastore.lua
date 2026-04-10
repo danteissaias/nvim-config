@@ -1,4 +1,3 @@
--- JSON/YAML schemas.
 return {
-  { "b0o/SchemaStore.nvim", lazy = true },
+  src = "b0o/SchemaStore.nvim",
 }

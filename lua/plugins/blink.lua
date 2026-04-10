@@ -1,41 +1,29 @@
 return {
-  "Saghen/blink.cmp",
-  version = "1.*",
-  event = "InsertEnter",
-  ---@module "blink.cmp"
-  ---@type blink.cmp.Config
-  opts = {
-    appearance = { nerd_font_variant = "mono" },
-    completion = {
-      trigger = {
-        prefetch_on_insert = true,
-      },
-      documentation = {
-        auto_show = true,
-        auto_show_delay_ms = 50,
-        update_delay_ms = 50,
-      },
-      accept = {
-        auto_brackets = {
-          enabled = false,
+  src = "Saghen/blink.cmp",
+  version = "v1.10.2",
+  config = function()
+    require("blink.cmp").setup {
+      appearance = { nerd_font_variant = "mono" },
+      completion = {
+        trigger = {
+          prefetch_on_insert = true,
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 50,
+          update_delay_ms = 50,
+        },
+        accept = {
+          auto_brackets = {
+            enabled = false,
+          },
         },
       },
-    },
-    sources = {
-      default = { "lazydev", "lsp", "path", "snippets" },
-      providers = {
-        lazydev = {
-          name = "LazyDev",
-          module = "lazydev.integrations.blink",
-          score_offset = 100,
-        },
+      sources = {
+        default = { "lsp", "path", "snippets" },
       },
-    },
-  },
-  config = function(_, opts)
-    require("blink.cmp").setup(opts)
+    }
 
-    -- Extend neovim's client capabilities with the completion ones.
     vim.lsp.config("*", { capabilities = require("blink.cmp").get_lsp_capabilities(nil, true) })
   end,
 }

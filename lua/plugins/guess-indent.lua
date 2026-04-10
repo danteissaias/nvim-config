@@ -1,5 +1,6 @@
 return {
-  "NMAC427/guess-indent.nvim",
-  event = { "BufNewFile", "BufReadPost" },
-  opts = {},
+  src = "NMAC427/guess-indent.nvim",
+  config = function()
+    require("guess-indent").setup {}
+  end,
 }

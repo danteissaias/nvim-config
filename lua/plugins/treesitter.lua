@@ -1,7 +1,5 @@
 return {
-  "nvim-treesitter/nvim-treesitter",
-  lazy = false,
-  build = ":TSUpdate",
+  src = "nvim-treesitter/nvim-treesitter",
   config = function()
     local ensure_installed = {
       "bash",

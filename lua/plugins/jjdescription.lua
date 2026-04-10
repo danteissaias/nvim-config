@@ -1,3 +1,3 @@
 return {
-  "avm99963/vim-jjdescription",
+  src = "avm99963/vim-jjdescription",
 }

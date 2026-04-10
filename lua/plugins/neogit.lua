@@ -1,13 +1,13 @@
 return {
-  "NeogitOrg/neogit",
+  src = "NeogitOrg/neogit",
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "sindrets/diffview.nvim",
+    { src = "nvim-lua/plenary.nvim" },
+    { src = "sindrets/diffview.nvim" },
   },
-  keys = {
-    { "<Leader>ng", ":Neogit<CR>", silent = true },
-  },
-  opts = {
-    graph_style = "kitty",
-  },
+  config = function()
+    require("neogit").setup {
+      graph_style = "kitty",
+    }
+    vim.keymap.set("n", "<Leader>ng", ":Neogit<CR>", { silent = true })
+  end,
 }

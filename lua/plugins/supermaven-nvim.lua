@@ -1,10 +1,11 @@
 return {
-  "supermaven-inc/supermaven-nvim",
-  event = "InsertEnter",
-  opts = {
-    keymaps = {
-      accept_suggestion = "<C-l>",
-    },
-    log_level = "off",
-  },
+  src = "supermaven-inc/supermaven-nvim",
+  config = function()
+    require("supermaven-nvim").setup {
+      keymaps = {
+        accept_suggestion = "<C-l>",
+      },
+      log_level = "off",
+    }
+  end,
 }

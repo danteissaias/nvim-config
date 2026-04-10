@@ -1,6 +1,6 @@
 return {
-  "echasnovski/mini.surround",
-  version = false,
-  event = "VeryLazy",
-  opts = {},
+  src = "echasnovski/mini.surround",
+  config = function()
+    require("mini.surround").setup {}
+  end,
 }
