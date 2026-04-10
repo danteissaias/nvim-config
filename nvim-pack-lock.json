@@ -9,10 +9,6 @@
       "src": "https://github.com/Saghen/blink.cmp",
       "version": "'v1.10.2'"
     },
-    "claude-code.nvim": {
-      "rev": "55c0cb59828fbc3bec744288286a46f5d5750b83",
-      "src": "https://github.com/greggh/claude-code.nvim"
-    },
     "conform.nvim": {
       "rev": "086a40dc7ed8242c03be9f47fbcee68699cc2395",
       "src": "https://github.com/stevearc/conform.nvim"
@@ -48,10 +44,6 @@
     "gx.nvim": {
       "rev": "ba9c408fc0130fc4548760c3933a81b58fc50de8",
       "src": "https://github.com/chrishrb/gx.nvim"
-    },
-    "lazydev.nvim": {
-      "rev": "ff2cbcba459b637ec3fd165a2be59b7bbaeedf0d",
-      "src": "https://github.com/folke/lazydev.nvim"
     },
     "lualine.nvim": {
       "rev": "f5d2a8570f8b736ddb9bb4be504355bcd6e15ec8",
