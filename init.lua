@@ -5,7 +5,7 @@ require "commands"
 
 local pack = require "pack"
 local plugins = {}
-for _, file in ipairs(vim.fn.glob("lua/plugins/*.lua", false, true)) do
+for _, file in ipairs(vim.fn.glob(vim.fn.stdpath "config" .. "/lua/plugins/*.lua", false, true)) do
   local mod = file:match("lua/(.+)%.lua$"):gsub("/", ".")
   table.insert(plugins, require(mod))
 end
