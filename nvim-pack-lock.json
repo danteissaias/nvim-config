@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "b2e84d00db4d5432f471d58898e796b478f075a7",
+      "rev": "0ce1f8aba51db6812382a4135f5b20a9f0c959ec",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "baleia.nvim": {
@@ -34,7 +34,7 @@
       "src": "https://github.com/folke/flash.nvim"
     },
     "fzf-lua": {
-      "rev": "114da56bb1b14b4aec073123fc1ef9346469967e",
+      "rev": "83f7195972538beee3a40932b38ccd86c8cc0f06",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -58,7 +58,7 @@
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "neogit": {
-      "rev": "e06745228600a585b88726fc9fba44a373c15a47",
+      "rev": "e906fce7e44ae562f06345be99a7db02f8315236",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nvim": {
@@ -75,7 +75,7 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-ts-autotag": {
-      "rev": "8e1c0a389f20bf7f5b0dd0e00306c1247bda2595",
+      "rev": "88c1453db4ba7dd24131086fe51fdf74e587d275",
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
