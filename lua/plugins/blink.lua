@@ -1,6 +1,11 @@
 return {
   src = "Saghen/blink.cmp",
-  version = "v1.10.2",
+  dependencies = {
+    { src = "Saghen/blink.lib" },
+  },
+  build = function()
+    require("blink.cmp").build():wait(60000)
+  end,
   config = function()
     require("blink.cmp").setup {
       appearance = { nerd_font_variant = "mono" },

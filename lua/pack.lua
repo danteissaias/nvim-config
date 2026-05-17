@@ -1,8 +1,9 @@
 -- From https://github.com/pirey/nvim/blob/master/lua/pack.lua
 
 ---@class SpecExt : vim.pack.Spec
----@field config function
----@field dependencies vim.pack.Spec[]
+---@field config? function
+---@field dependencies? vim.pack.Spec[]
+---@field build? fun(args: table)
 
 ---@param src string
 ---@return string
@@ -115,11 +116,29 @@ function M.setup(specs_ext)
         table.insert(specs, { src = normalize_src(dep.src), version = dep.version })
       end
     end
-    table.insert(specs, vim.tbl_extend("force", spec, { src = normalize_src(spec.src) }))
+    local pack_spec = vim.tbl_extend("force", spec, { src = normalize_src(spec.src) })
+    if spec.build then
+      pack_spec.data = vim.tbl_extend("force", pack_spec.data or {}, { build = spec.build })
+    end
+    table.insert(specs, pack_spec)
     if spec.config then
       table.insert(configs, spec.config)
     end
   end
+
+  vim.api.nvim_create_autocmd("PackChanged", {
+    group = vim.api.nvim_create_augroup("NvimPackBuild", { clear = true }),
+    callback = function(args)
+      if args.data.kind ~= "install" and args.data.kind ~= "update" then
+        return
+      end
+
+      local build = args.data.spec.data and args.data.spec.data.build
+      if build then
+        build(args)
+      end
+    end,
+  })
 
   vim.pack.add(specs, { confirm = false })
 
