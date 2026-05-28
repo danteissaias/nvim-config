@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "68ba9015c0cc77a0fe954bd2578dfa7a5c24134f",
+      "rev": "e25e63f3b24fd6b8c2fc713107ad5d5594028eac",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "baleia.nvim": {
@@ -9,15 +9,15 @@
       "src": "https://github.com/m00qek/baleia.nvim"
     },
     "blink.cmp": {
-      "rev": "35e3923a09ff3db150ceff80004befcbbfa071a0",
+      "rev": "56507d063ff412baf49a359e7f57d8473a8b6547",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
-      "rev": "f29d8bac6549bc1e7d699c83f680823d7def98bd",
+      "rev": "41bc1199dd1f5f0687efbd522061b22002c2d4c5",
       "src": "https://github.com/Saghen/blink.lib"
     },
     "conform.nvim": {
-      "rev": "24c70347f6b2128679f47d2eb765156ef34bf9e0",
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "diffview.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/folke/flash.nvim"
     },
     "fzf-lua": {
-      "rev": "71b45a044c4ef6ecb1910880ef642d5a0e1c02e9",
+      "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
@@ -82,11 +82,11 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "0d7d35fa946837b8738b17c18d1faa1ac351e7f9",
+      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
-      "rev": "21c669e7bfeb1546ae988b52813138e4d674bbf5",
+      "rev": "b91ee5a77a6a9605d9c1aaf4fda74b66082c8297",
       "src": "https://github.com/stevearc/oil.nvim"
     },
     "plenary.nvim": {
