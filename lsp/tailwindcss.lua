@@ -4,7 +4,10 @@ local util = require "util"
 
 ---@type vim.lsp.Config
 return {
-  cmd = { "tailwindcss-language-server", "--stdio" },
+  cmd = function(dispatchers, config)
+    local cmd = util.find_bin("tailwindcss-language-server", (config or {}).root_dir)
+    return vim.lsp.rpc.start({ cmd, "--stdio" }, dispatchers)
+  end,
   -- filetypes copied and adjusted from tailwindcss-intellisense
   filetypes = {
     -- html
@@ -62,6 +65,13 @@ return {
     "svelte",
     "templ",
   },
+  capabilities = {
+    workspace = {
+      didChangeWatchedFiles = {
+        dynamicRegistration = true,
+      },
+    },
+  },
   settings = {
     tailwindCSS = {
       validate = true,
@@ -82,38 +92,26 @@ return {
         "ngClass",
       },
       includeLanguages = {
-        eelixir = "html-eex",
-        eruby = "erb",
-        templ = "html",
         htmlangular = "html",
+        templ = "html",
       },
     },
   },
   before_init = function(_, config)
-    if not config.settings then
-      config.settings = {}
-    end
-    if not config.settings.editor then
-      config.settings.editor = {}
-    end
-    if not config.settings.editor.tabSize then
-      config.settings.editor.tabSize = vim.lsp.util.get_effective_tabstop()
-    end
+    config.settings = vim.tbl_deep_extend("keep", config.settings or {}, {
+      editor = { tabSize = vim.lsp.util.get_effective_tabstop() },
+    })
   end,
   workspace_required = true,
   root_dir = function(bufnr, on_dir)
     local root_files = {
-      "tailwind.config.js",
-      "tailwind.config.cjs",
-      "tailwind.config.mjs",
-      "tailwind.config.ts",
-      "postcss.config.js",
-      "postcss.config.cjs",
-      "postcss.config.mjs",
-      "postcss.config.ts",
       ".git",
     }
     local fname = vim.api.nvim_buf_get_name(bufnr)
-    on_dir(vim.fs.dirname(vim.fs.find(root_files, { path = fname, upward = true })[1]))
+    root_files = util.insert_package_json(root_files, "tailwindcss", fname)
+    local root_file = vim.fs.find(root_files, { path = fname, upward = true })[1]
+    if root_file then
+      on_dir(vim.fs.dirname(root_file))
+    end
   end,
 }
