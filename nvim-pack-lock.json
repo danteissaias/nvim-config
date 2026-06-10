@@ -1,7 +1,7 @@
 {
   "plugins": {
     "SchemaStore.nvim": {
-      "rev": "8fa7f9cb8805f8abf27432d4b1e7c4be83d76807",
+      "rev": "e954496f8ef22904e8a84f5078f4a110fdc7a0d3",
       "src": "https://github.com/b0o/SchemaStore.nvim"
     },
     "baleia.nvim": {
@@ -9,11 +9,11 @@
       "src": "https://github.com/m00qek/baleia.nvim"
     },
     "blink.cmp": {
-      "rev": "b02ac65634bdb8af2dcc4eb6c807c060e1e15ae6",
+      "rev": "72d81f789f1ae5f8765a87a5a5fc3562ad687df7",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
-      "rev": "b127d48bf8e9ac9cf41f6e0fbead317503f76558",
+      "rev": "5876dd95deeb70aadbe9f1c0b7117a135061cdac",
       "src": "https://github.com/Saghen/blink.lib"
     },
     "conform.nvim": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/stevearc/dressing.nvim"
     },
     "fidget.nvim": {
-      "rev": "82404b196e73a00b1727a91903beef5ddc319d22",
+      "rev": "6f793b2bcd2d35e201c09520f698bb763220908a",
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "flash.nvim": {
@@ -37,11 +37,11 @@
       "src": "https://github.com/folke/flash.nvim"
     },
     "fzf-lua": {
-      "rev": "988416cc782dfe28bff3f0da9b8c943b236cd86a",
+      "rev": "532d463f5c83595192fe740572d8fd6902b2217a",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "gitsigns.nvim": {
-      "rev": "25050e4ed39e628282831d4cbecb1850454ce915",
+      "rev": "eb60cc7b94c46005237fd34170d76f3a089a90aa",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "guess-indent.nvim": {
@@ -57,11 +57,11 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.surround": {
-      "rev": "9fd5ebef2b34cc4ac3c0f1811a6726ea6d92fa91",
+      "rev": "5c2a99e43b959055311a4557875985142b672af0",
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "neogit": {
-      "rev": "99326a1310fb2d616b455d2fd16d01bf00682f06",
+      "rev": "a0847c4bea5a5f92a36e3f3bf7da99d7d685d3ac",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nvim": {
@@ -82,7 +82,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
+      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
