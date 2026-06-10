@@ -4,7 +4,10 @@ return {
     { src = "Saghen/blink.lib" },
   },
   build = function()
-    require("blink.cmp").build():wait(60000)
+    -- On updates, blink.cmp may already be loaded with the old git commit.
+    -- Reload it so the native fuzzy lib is built for the new commit hash.
+    package.loaded["blink.cmp"] = nil
+    require("blink.cmp").build():pwait(60000)
   end,
   config = function()
     require("blink.cmp").setup {
