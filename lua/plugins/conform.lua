@@ -6,6 +6,7 @@ return {
         lua = { "stylua" },
         nix = { "nixfmt" },
         go = { "gofmt" },
+        terraform = { "terraform_fmt" },
       },
       format_on_save = function()
         if not vim.g.autoformat then
