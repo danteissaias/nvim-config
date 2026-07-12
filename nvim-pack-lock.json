@@ -9,7 +9,7 @@
       "src": "https://github.com/m00qek/baleia.nvim"
     },
     "blink.cmp": {
-      "rev": "72d81f789f1ae5f8765a87a5a5fc3562ad687df7",
+      "rev": "cfe100ccac24b0a622d7b9f04aa8c9f3e7624a16",
       "src": "https://github.com/Saghen/blink.cmp"
     },
     "blink.lib": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/j-hui/fidget.nvim"
     },
     "flash.nvim": {
-      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
+      "rev": "b6346946d10d07998efee029fb0f7a593806d0cd",
       "src": "https://github.com/folke/flash.nvim"
     },
     "fzf-lua": {
@@ -57,7 +57,7 @@
       "src": "https://github.com/nvim-lualine/lualine.nvim"
     },
     "mini.surround": {
-      "rev": "5c2a99e43b959055311a4557875985142b672af0",
+      "rev": "c30ec60393b256427512c6996a2b37d9cbcbb66a",
       "src": "https://github.com/echasnovski/mini.surround"
     },
     "neogit": {
@@ -82,7 +82,7 @@
       "src": "https://github.com/windwp/nvim-ts-autotag"
     },
     "nvim-web-devicons": {
-      "rev": "dad71387de386a946b123079d0e53f23028f3abd",
+      "rev": "09d1324e264c6950262dbe02a9bce2933a6800db",
       "src": "https://github.com/nvim-tree/nvim-web-devicons"
     },
     "oil.nvim": {
