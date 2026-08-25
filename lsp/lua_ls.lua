@@ -21,7 +21,7 @@ return {
         library = {
           vim.env.VIMRUNTIME,
           "${3rd}/luv/library",
-          vim.fn.stdpath "data" .. "/site/pack/nvim/start",
+          vim.fn.stdpath "data" .. "/site/pack/core/opt",
         },
       },
     },
