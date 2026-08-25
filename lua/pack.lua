@@ -105,6 +105,28 @@ function M.clean()
   vim.pack.del(specs, { force = true })
 end
 
+local function apply_patch(args)
+  local patch = vim.fs.joinpath(vim.fn.stdpath "config", "patches", args.data.spec.name .. ".patch")
+  if vim.fn.filereadable(patch) == 0 then
+    return
+  end
+
+  local opts = { cwd = args.data.path, text = true }
+  local check = vim.system({ "git", "apply", "--check", patch }, opts):wait()
+  if check.code ~= 0 then
+    local reverse_check = vim.system({ "git", "apply", "--reverse", "--check", patch }, opts):wait()
+    if reverse_check.code == 0 then
+      return
+    end
+    error("Failed to apply patch for " .. args.data.spec.name .. ":\n" .. vim.trim(check.stderr))
+  end
+
+  local result = vim.system({ "git", "apply", patch }, opts):wait()
+  if result.code ~= 0 then
+    error("Failed to apply patch for " .. args.data.spec.name .. ":\n" .. vim.trim(result.stderr))
+  end
+end
+
 ---@param specs_ext SpecExt[]
 function M.setup(specs_ext)
   local specs = {}
@@ -132,6 +154,8 @@ function M.setup(specs_ext)
       if args.data.kind ~= "install" and args.data.kind ~= "update" then
         return
       end
+
+      apply_patch(args)
 
       local build = args.data.spec.data and args.data.spec.data.build
       if build then
