@@ -14,7 +14,7 @@ return {
       appearance = { nerd_font_variant = "mono" },
       completion = {
         trigger = {
-          prefetch_on_insert = true,
+          prefetch_on_insert = false,
         },
         documentation = {
           auto_show = true,
