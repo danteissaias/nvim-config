@@ -15,4 +15,7 @@ return {
 
     on_dir(project_root)
   end,
+  on_init = function(client)
+    vim.lsp.semantic_tokens.enable(false, { client_id = client.id })
+  end,
 }
