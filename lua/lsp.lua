@@ -27,6 +27,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+vim.lsp.config("*", {
+  flags = {
+    debounce_text_changes = 500,
+  },
+})
+
 -- Set up LSP servers.
 vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, {
   once = true,
