@@ -2,6 +2,7 @@ local parsers = {
   "bash",
   "c",
   "cpp",
+  "dotprompt",
   "fish",
   "gitcommit",
   "go",
@@ -29,6 +30,20 @@ local parsers = {
   "vimdoc",
   "yaml",
 }
+
+vim.filetype.add { extension = { prompt = "dotprompt" } }
+
+-- Not in nvim-treesitter. Google's grammar lives in a monorepo subdirectory.
+local function register_dotprompt()
+  require("nvim-treesitter.parsers").dotprompt = {
+    install_info = {
+      url = "https://github.com/google/dotprompt",
+      revision = "856196bb7e7c705e41983d02e84d21c31844e36f",
+      location = "packages/treesitter",
+      queries = "packages/treesitter/queries",
+    },
+  }
+end
 
 local function install_list()
   local parser_set = {}
@@ -63,6 +78,12 @@ end
 return {
   src = "nvim-treesitter/nvim-treesitter",
   config = function()
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "TSUpdate",
+      group = vim.api.nvim_create_augroup("DotpromptParser", { clear = true }),
+      callback = register_dotprompt,
+    })
+    register_dotprompt()
     prepend_query_runtime()
     require("nvim-treesitter").install(install_list()):wait(300000)
 

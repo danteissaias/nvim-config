@@ -1,33 +1,38 @@
-local oxlint_settings = {
-  typeAware = true,
-  -- TODO: Figure out how to only enable for vite-plus repos
-  -- configPath = "./vite.config.ts",
-}
+-- Based on nvim-lspconfig's lsp/oxlint.lua, with two changes for Vite+:
+-- `vp` is tried first, because plain oxlint ignores the `lint` field in
+-- vite.config.ts, and a Vite+ workspace roots at the workspace, not at a
+-- package's own vite.config.ts.
+
+local util = require("util")
 
 ---@type vim.lsp.Config
 return {
   cmd = function(dispatchers, config)
-    local cmd = "oxlint"
-    local local_cmd = (config or {}).root_dir and config.root_dir .. "/node_modules/.bin/oxlint"
-    if local_cmd and vim.fn.executable(local_cmd) == 1 then
-      cmd = local_cmd
+    if (config or {}).root_dir then
+      for _, name in ipairs({ "vp", "oxlint" }) do
+        local local_cmd = vim.fs.joinpath(config.root_dir, "node_modules/.bin", name)
+        if vim.fn.executable(local_cmd) == 1 then
+          local cmd = name == "vp" and { local_cmd, "lint", "--lsp" } or { local_cmd, "--lsp" }
+          return vim.lsp.rpc.start(cmd, dispatchers)
+        end
+      end
     end
-    return vim.lsp.rpc.start({ cmd, "--lsp" }, dispatchers)
+    return vim.lsp.rpc.start({ "oxlint", "--lsp" }, dispatchers)
   end,
   filetypes = {
     "javascript",
     "javascriptreact",
-    "javascript.jsx",
     "typescript",
     "typescriptreact",
-    "typescript.tsx",
+    "vue",
+    "svelte",
+    "astro",
   },
   workspace_required = true,
-  settings = oxlint_settings,
-  -- INFO: we need this to make server start with correct params
-  -- https://github.com/oxc-project/oxc/blob/main/crates/oxc_language_server/src/main.rs#L89-L95
-  init_options = {
-    settings = oxlint_settings,
-  },
-  root_markers = { ".oxfmtrc.json", "vite.config.ts" },
+  root_dir = function(bufnr, on_dir)
+    local root = util.vite_plus_root(bufnr) or vim.fs.root(bufnr, { ".oxlintrc.json", ".oxlintrc.jsonc", "oxlint.config.ts" })
+    if root then
+      on_dir(root)
+    end
+  end,
 }

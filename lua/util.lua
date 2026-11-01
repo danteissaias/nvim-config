@@ -28,4 +28,28 @@ function M.find_bin(name, root_dir)
   return name
 end
 
+-- The workspace root (next to its lockfile) when its package.json depends on vite-plus.
+-- Vite+ keeps the lint and fmt config in that root's vite.config.ts.
+-- From https://github.com/chenxin-yan/nix-dotfiles/blob/3e667232510a768bef8f8040e1fbf39f4acad3e0/modules/features/cli/nvim/config/lua/cyan/plugins/languages/web/viteplus.lua
+function M.vite_plus_root(source)
+  local root = vim.fs.root(source, {
+    { "pnpm-workspace.yaml", "pnpm-lock.yaml", "package-lock.json", "yarn.lock", "bun.lock", "bun.lockb" },
+    "package.json",
+  })
+  if not root then
+    return nil
+  end
+  local ok, package = pcall(function()
+    return vim.json.decode(table.concat(vim.fn.readfile(vim.fs.joinpath(root, "package.json")), "\n"))
+  end)
+  if ok and type(package) == "table" then
+    for _, key in ipairs({ "dependencies", "devDependencies" }) do
+      if type(package[key]) == "table" and package[key]["vite-plus"] then
+        return root
+      end
+    end
+  end
+  return nil
+end
+
 return M

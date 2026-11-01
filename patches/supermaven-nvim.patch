@@ -1,0 +1,46 @@
+diff --git a/lua/supermaven-nvim/binary/binary_handler.lua b/lua/supermaven-nvim/binary/binary_handler.lua
+index c45a855..045e8fa 100644
+--- a/lua/supermaven-nvim/binary/binary_handler.lua
++++ b/lua/supermaven-nvim/binary/binary_handler.lua
+@@ -36,6 +36,7 @@ timer:start(
+ )
+ 
+ function BinaryLifecycle:start_binary()
++  self.pending_activation_request = nil
+   self.stdin = loop.new_pipe(false)
+   self.stdout = loop.new_pipe(false)
+   self.stderr = loop.new_pipe(false)
+@@ -65,6 +66,7 @@ function BinaryLifecycle:is_running()
+ end
+ 
+ function BinaryLifecycle:stop_binary()
++  self.pending_activation_request = nil
+   if self:is_running() then
+     self.handle:kill(loop.constants.SIGTERM)
+     self.handle:close()
+@@ -175,11 +177,14 @@ function BinaryLifecycle:process_message(message)
+     self:update_metadata(message)
+   elseif message.kind == "activation_request" then
+     self.activate_url = message.activateUrl
+-    vim.schedule(function()
+-      if self.activate_url ~= nil then
++    local request = {}
++    self.pending_activation_request = request
++    vim.defer_fn(function()
++      if self.pending_activation_request == request and self.activate_url ~= nil then
++        self.pending_activation_request = nil
+         self:open_popup(self.activate_url, true)
+       end
+-    end)
++    end, 1000)
+   elseif message.kind == "activation_success" then
+     self.activate_url = nil
+     log:trace("Supermaven was activated successfully.")
+@@ -539,6 +544,7 @@ function BinaryLifecycle:use_pro()
+ end
+ 
+ function BinaryLifecycle:close_popup()
++  self.pending_activation_request = nil
+   if self.win ~= nil and vim.api.nvim_win_is_valid(self.win) then
+     vim.api.nvim_win_close(self.win, true)
+   end
